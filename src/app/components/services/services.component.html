@@ -1,38 +1,37 @@
 <mat-card *ngFor="let service of services;let pos = index;" class="d-none d-lg-block services-card col-12">
     <div class="media">
         <div>
-            <span *ngIf="myservices && service.professional !== 1"
-                  style="color: #e0040b; font-size: 13px; margin-left: 24px;" class="fw-600">{{service.professional === 2 ? "En revisión" : "Bloqueado"}}</span>
-            <img class="d-flex align-self-center mr-3" width="115"
-                 [src]="service.icon ? service.icon : '../../../assets/service_img.png'"
-                 appImageZoom>
+            <span *ngIf="myservices && service.professional !== 1" style="color: #e0040b; font-size: 13px; margin-left: 24px;" class="fw-600">{{service.professional === 2 ? "En revisión" : "Bloqueado"}}</span>
+            <img class="d-flex align-self-center mr-3" width="115" [src]="service.icon ? service.icon : '../../../assets/service_img.png'"
+                appImageZoom>
         </div>
         <div class="media-body" [ngStyle]="{'margin-top': (myservices && service.professional !== 1) ? '25px' : '0'}">
             <h5 class="mt-0 tc-blue">{{service.title}}</h5>
-            <div class="text-center fw-600 pro" style=""
-                 *ngIf="(service.professional === 1) && !myfavorites">PRO
+            <div class="text-center fw-600 pro" style="" *ngIf="(service.professional === 1) && !myfavorites">PRO
             </div>
             <hr>
             <div class="info">
                 <mat-grid-list cols="7" rowHeight="54px">
                     <mat-grid-tile [colspan]="5" [rowspan]="1" class="izq">
                         <div class="fw-600 tc-grei" *ngIf="!myservices">
-                            <span>Calificación: {{service.globalrate}}/10</span><br>
-                            <span>Distancia: 5km</span><br>
+                            <span>Calificación: {{service.globalrate}}/10</span>
+                            <br>
+                            <span>Distancia: 5km</span>
+                            <br>
                             <span>Subcategorías: {{result_subcategories(service)}}</span>
                         </div>
 
                         <div class="fw-600 tc-grei" *ngIf="myservices">
-                            <span>Subcategorías: {{result_subcategories(service)}}</span><br>
-                            <span>Ciudad: {{result_cities(service)}}</span><br>
+                            <span>Subcategorías: {{result_subcategories(service)}}</span>
+                            <br>
+                            <span>Ciudad: {{result_cities(service)}}</span>
+                            <br>
                             <span>Calificación: {{service.globalrate}}/10</span>
                         </div>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
-                        <div *ngIf="loggedIn" class="favorite-{{service.favorite}}"
-                             style="cursor: pointer;">
-                            <i class="fa fa-heart fa-2x tc-grei scale" style="margin-top: 9px;"
-                               (click)="markFavorite(service.id, service.favorite, pos)"></i>
+                        <div *ngIf="loggedIn" class="favorite-{{service.favorite}}" style="cursor: pointer;">
+                            <i class="fa fa-heart fa-2x tc-grei scale" style="margin-top: 9px;" (click)="markFavorite(service.id, service.favorite, pos)"></i>
                         </div>
                     </mat-grid-tile>
                 </mat-grid-list>
@@ -40,8 +39,7 @@
 
             <mat-grid-list cols="2" rowHeight="26px" *ngIf="!myfavorites && !myservices" class="d-none d-sm-block">
                 <mat-grid-tile>
-                    <button mat-raised-button color="primary" class="tc-white col-12"
-                            [routerLink]="['./service', service.id]">
+                    <button mat-raised-button color="primary" class="tc-white col-12" [routerLink]="['./service', service.id]">
                         <mat-icon>done</mat-icon>
                         Visualizar
                     </button>
@@ -56,8 +54,7 @@
 
             <mat-grid-list cols="2" rowHeight="26px" *ngIf="!myfavorites && !myservices" class="d-block d-sm-none">
                 <mat-grid-tile>
-                    <button mat-raised-button color="primary" class="tc-white col-12"
-                            [routerLink]="['./service', service.id]">
+                    <button mat-raised-button color="primary" class="tc-white col-12" [routerLink]="['./service', service.id]">
                         <mat-icon>done</mat-icon>
                     </button>
                 </mat-grid-tile>
@@ -70,8 +67,7 @@
 
             <mat-grid-list cols="1" rowHeight="26px" *ngIf="myfavorites && !myservices">
                 <mat-grid-tile>
-                    <button mat-raised-button color="primary" class="tc-white col-12"
-                            [routerLink]="['./service', service.id]">
+                    <button mat-raised-button color="primary" class="tc-white col-12" [routerLink]="['./service', service.id]">
                         <mat-icon>done</mat-icon>
                         Ver detalle
                     </button>
@@ -80,22 +76,19 @@
 
             <mat-grid-list cols="4" rowHeight="26px" *ngIf="myservices">
                 <mat-grid-tile>
-                    <button mat-raised-button class="col-12 tc-white bc-green"
-                            [routerLink]="'./' + service.id + '/pay'">
+                    <button mat-raised-button class="col-12 tc-white bc-green" [routerLink]="'./' + service.id + '/pay'">
                         <mat-icon>attach_money</mat-icon>
                     </button>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
-                    <button mat-raised-button color="primary" class="col-12 tc-white"
-                            [routerLink]="['./service', service.id]">
+                    <button mat-raised-button color="primary" class="col-12 tc-white" [routerLink]="['./service', service.id]">
                         <mat-icon>done</mat-icon>
                     </button>
                 </mat-grid-tile>
 
                 <mat-grid-tile>
-                    <button mat-raised-button class="col-12 tc-white bc-yellow"
-                            [routerLink]="'./' + service.id + '/edit'">
+                    <button mat-raised-button class="col-12 tc-white bc-yellow" [routerLink]="'./' + service.id + '/edit'">
                         <mat-icon>assignment</mat-icon>
                     </button>
                 </mat-grid-tile>
@@ -114,50 +107,47 @@
 <mat-card *ngFor="let service of services;let pos = index;" class="d-block d-lg-none services-card col-12">
     <div class="media">
         <div>
-            <span *ngIf="myservices && service.professional !== 1"
-                  style="color: #e0040b; font-size: 13px; margin-left: 24px;" class="fw-600">{{service.professional === 2 ? "En revisión" : "Bloqueado"}}</span>
-            <img class="d-flex align-self-center mr-3" width="115"
-                 [src]="service.icon ? service.icon : '../../../assets/service_img.png'"
-                 appImageZoom>
+            <span *ngIf="myservices && service.professional !== 1" style="color: #e0040b; font-size: 13px; margin-left: 24px;" class="fw-600">{{service.professional === 2 ? "En revisión" : "Bloqueado"}}</span>
+            <img class="d-flex align-self-center mr-3" width="115" [src]="service.icon ? service.icon : '../../../assets/service_img.png'"
+                appImageZoom>
         </div>
 
     </div>
     <div class="media-body mt-25" [ngStyle]="{'margin-top': (myservices && service.professional !== 1) ? '25px' : '0'}">
         <h5 class="mt-0 tc-blue">{{service.title}}</h5>
-        <div class="text-center fw-600 pro" style=""
-             *ngIf="(service.professional === 1) && !myfavorites">PRO
+        <div class="text-center fw-600 pro" style="" *ngIf="(service.professional === 1) && !myfavorites">PRO
         </div>
         <hr>
         <div class="info">
             <mat-grid-list cols="7" rowHeight="80px" *ngIf="!myservices">
                 <mat-grid-tile [colspan]="5" [rowspan]="1" class="izq">
                     <div class="fw-600 tc-grei">
-                        <span>Calificación: {{service.globalrate}}/10</span><br>
-                        <span>Distancia: 5km</span><br>
+                        <span>Calificación: {{service.globalrate}}/10</span>
+                        <br>
+                        <span>Distancia: 5km</span>
+                        <br>
                         <span>Subcategorías: {{result_subcategories(service)}}</span>
                     </div>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <div *ngIf="loggedIn" class="favorite-{{service.favorite}}"
-                         style="cursor: pointer;">
-                        <i class="fa fa-heart fa-2x tc-grei scale" style="margin-top: 9px;"
-                           (click)="markFavorite(service.id, service.favorite, pos)"></i>
+                    <div *ngIf="loggedIn" class="favorite-{{service.favorite}}" style="cursor: pointer;">
+                        <i class="fa fa-heart fa-2x tc-grei scale" style="margin-top: 9px;" (click)="markFavorite(service.id, service.favorite, pos)"></i>
                     </div>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-grid-list cols="7" rowHeight="130px" *ngIf="myservices">
                 <mat-grid-tile [colspan]="5" [rowspan]="1" class="izq">
                     <div class="fw-600 tc-grei" *ngIf="myservices">
-                        <span>Subcategorías: {{result_subcategories(service)}}</span><br>
-                        <span>Ciudad: {{result_cities(service)}}</span><br>
+                        <span>Subcategorías: {{result_subcategories(service)}}</span>
+                        <br>
+                        <span>Ciudad: {{result_cities(service)}}</span>
+                        <br>
                         <span>Calificación: {{service.globalrate}}</span>
                     </div>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <div *ngIf="loggedIn" class="favorite-{{service.favorite}}"
-                         style="cursor: pointer;">
-                        <i class="fa fa-heart fa-2x tc-grei scale" style="margin-top: 9px;"
-                           (click)="markFavorite(service.id, service.favorite, pos)"></i>
+                    <div *ngIf="loggedIn" class="favorite-{{service.favorite}}" style="cursor: pointer;">
+                        <i class="fa fa-heart fa-2x tc-grei scale" style="margin-top: 9px;" (click)="markFavorite(service.id, service.favorite, pos)"></i>
                     </div>
                 </mat-grid-tile>
             </mat-grid-list>
@@ -165,16 +155,14 @@
 
         <mat-grid-list cols="2" rowHeight="26px" *ngIf="!myfavorites && !myservices" class="d-none d-sm-block">
             <mat-grid-tile>
-                <button mat-raised-button color="primary" class="tc-white col-12"
-                        [routerLink]="['./service', service.id]">
+                <button mat-raised-button color="primary" class="tc-white col-12" [routerLink]="['./service', service.id]">
                     <mat-icon>done</mat-icon>
                     Visualizar
                 </button>
             </mat-grid-tile>
             <mat-grid-tile>
-                <button [disabled]="!loggedIn" mat-raised-button
-                        class="tc-white col-12" [ngStyle]="{'background-color': loggedIn ? '#E0040B' : ''}"
-                        (click)="openDialog(service.id)">
+                <button [disabled]="!loggedIn" mat-raised-button class="tc-white col-12" [ngStyle]="{'background-color': loggedIn ? '#E0040B' : ''}"
+                    (click)="openDialog(service.id)">
                     <mat-icon>mic</mat-icon>
                     Denunciar
                 </button>
@@ -183,8 +171,7 @@
 
         <mat-grid-list cols="2" rowHeight="26px" *ngIf="!myfavorites && !myservices" class="d-block d-sm-none">
             <mat-grid-tile>
-                <button mat-raised-button color="primary" class="tc-white col-12"
-                        [routerLink]="['./service', service.id]">
+                <button mat-raised-button color="primary" class="tc-white col-12" [routerLink]="['./service', service.id]">
                     <mat-icon>done</mat-icon>
                 </button>
             </mat-grid-tile>
@@ -197,8 +184,7 @@
 
         <mat-grid-list cols="1" rowHeight="26px" *ngIf="myfavorites && !myservices">
             <mat-grid-tile>
-                <button mat-raised-button color="primary" class="tc-white col-12"
-                        [routerLink]="['./service', service.id]">
+                <button mat-raised-button color="primary" class="tc-white col-12" [routerLink]="['./service', service.id]">
                     <mat-icon>done</mat-icon>
                     Ver detalle
                 </button>
@@ -207,22 +193,19 @@
 
         <mat-grid-list cols="4" rowHeight="26px" *ngIf="myservices">
             <mat-grid-tile>
-                <button mat-raised-button class="col-12 tc-white bc-green"
-                        [routerLink]="'./' + service.id + '/pay'">
+                <button mat-raised-button class="col-12 tc-white bc-green" [routerLink]="'./' + service.id + '/pay'">
                     <mat-icon>attach_money</mat-icon>
                 </button>
             </mat-grid-tile>
 
             <mat-grid-tile>
-                <button mat-raised-button color="primary" class="col-12 tc-white"
-                        [routerLink]="['./service', service.id]">
+                <button mat-raised-button color="primary" class="col-12 tc-white" [routerLink]="['./service', service.id]">
                     <mat-icon>done</mat-icon>
                 </button>
             </mat-grid-tile>
 
             <mat-grid-tile>
-                <button mat-raised-button class="col-12 tc-white bc-yellow"
-                        [routerLink]="'./' + service.id + '/edit'">
+                <button mat-raised-button class="col-12 tc-white bc-yellow" [routerLink]="'./' + service.id + '/edit'">
                     <mat-icon>assignment</mat-icon>
                 </button>
             </mat-grid-tile>
