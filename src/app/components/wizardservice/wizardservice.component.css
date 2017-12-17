@@ -1,0 +1,13 @@
+.horizontal ul.steps-indicator  li.current div:after{
+    background-color: #1e6bb8!important;
+    color: #ffffff;
+}
+.horizontal ul.steps-indicator  li.current:after{
+    background-color: #1e6bb8!important;
+    color: #ffffff;
+}
+.horizontal[_nghost-c5]   ul.steps-indicator[_ngcontent-c5]   li[_ngcontent-c5]   div[_ngcontent-c5]   a[_ngcontent-c5]{
+    background-color: #1e6bb8!important;
+    color: #ffffff;
+}
+

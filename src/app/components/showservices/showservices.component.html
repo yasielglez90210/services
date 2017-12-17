@@ -1,0 +1,46 @@
+<div class="col-12">
+    <h4 class="text-center tc-blue">Lista de servicios</h4>
+    <hr class="bc-grei">
+    <form [formGroup]="filterForm" name="form" (ngSubmit)="filterForm.valid && filter()">
+        <div class="row">
+
+            <mat-form-field class="col-12">
+                <mat-select placeholder="Ciudades" [(ngModel)]="model.cities"
+                            name="cities" [formControl]="filterForm.controls['cities']">
+                    <mat-option *ngFor="let city of cities" [value]="city.id">
+                        {{ city.title }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-12">
+                <mat-select placeholder="Subcategorias" [(ngModel)]="model.subcategory"
+                            name="subcategories" [formControl]="filterForm.controls['subcategory']">
+                    <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">
+                        {{ subcategory.title }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-12">
+                <input matInput placeholder="Distancia (km)" name="distance1" [(ngModel)]="model.distance" type="number"
+                       [formControl]="filterForm.controls['distance']"
+                       min="1">
+                <mat-error *ngIf="filterForm.controls['distance'].invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <div class="form-group text-center col-12">
+                <button mat-raised-button color="primary" class="tc-white col-12" [disabled]="filterForm.invalid">
+                    Filtrar
+                </button>
+            </div>
+        </div>
+    </form>
+    <br>
+
+    <app-services [services]=services></app-services>
+</div>
+
+
+
+

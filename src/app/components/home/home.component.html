@@ -1,0 +1,28 @@
+<div class="col-12">
+    <form name="form" (ngSubmit)="f.form.valid && searchQuery()" #f="ngForm">
+        <mat-form-field class="text-center">
+            <input matInput placeholder="¿Que buscas?" name="query" [(ngModel)]="query">
+        </mat-form-field>
+    </form>
+    <br>
+    <div class="mb-20">
+        <h5 class="text-center tc-blue">Principales Tendencias</h5>
+    </div>
+
+    <app-subcategories [subcategories]=subcategories></app-subcategories>
+
+    <div class="text-center">
+        <button mat-raised-button color="primary" class="tc-white" routerLink="/categories">
+            <mat-icon>search</mat-icon>
+            Buscar por categoría
+        </button>
+    </div>
+    <br><br>
+</div>
+
+
+
+
+
+
+
